@@ -1,0 +1,47 @@
+[
+    {
+        "label": "demjson3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "demjson3",
+        "description": "demjson3",
+        "detail": "demjson3",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "raw",
+        "kind": 5,
+        "importPath": "object_stringifier",
+        "description": "object_stringifier",
+        "peekOfCode": "raw = re.sub(r'\\([^)]*\\)', '', raw)\n# Step 4: Convert to Python object using demjson3\ntry:\n    js_object = demjson3.decode(raw)\nexcept demjson3.JSONDecodeError as e:\n    print(f\"❌ Failed to parse config: {e}\")\n    exit(1)\n# Step 5: Create the output dictionary by stringifying each top-level key's value\noutput = {\n    key: json.dumps(value)",
+        "detail": "object_stringifier",
+        "documentation": {}
+    },
+    {
+        "label": "output",
+        "kind": 5,
+        "importPath": "object_stringifier",
+        "description": "object_stringifier",
+        "peekOfCode": "output = {\n    key: json.dumps(value)\n    for key, value in js_object.items()\n}\n# Step 6: Save to file\nwith open(\"parsed_config_output.json\", \"w\") as f:\n    json.dump(output, f, indent=2)\nprint(\"✅ Saved with all top-level keys stringified in JSON\")",
+        "detail": "object_stringifier",
+        "documentation": {}
+    }
+]
